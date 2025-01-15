@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Resumes</title>
+</head>
+<body>
+    <h1>Uploaded Resumes</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Resume File</th>
+                <th>Candidate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resume in resumes %}
+            <tr>
+                <td>{{ resume.name }}</td>
+                <td>{{ resume.email }}</td>
+                <td>
+                    <a href="{{ resume.resume_file.url }}">Download</a>
+                </td>
+                <td>{{ resume.candidate.username }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No resumes found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
